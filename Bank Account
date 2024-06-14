@@ -1,0 +1,33 @@
+class Account:
+    def __init__(self,acc_num,balance):
+        self.acc_num = acc_num
+        self.balance = balance
+
+acc_num = int(input("Enter account number: "))
+balance = int(input("Enter remaining balance: "))
+
+account = Account(acc_num,balance)
+
+while(True):
+    action = input("Enter what to do (credit/debit/balnce): ")
+    if (action=="credit"):
+        credit = int(input("Enter money to be credited: "))
+        account.balance += credit
+        print(f"The amount credited to account number {account.acc_num} is {credit}")
+
+    elif (action=="debit"):
+        debit = int(input("Enter amount to be debited: "))
+        if (debit <= account.balance):
+            account.balance -= debit
+            print(f"The amount debited from account number {account.acc_num} is {debit}")
+        else:
+            print("Insufficient balance")
+
+    elif (action=="balance"):
+        print("Account number: ",account.acc_num)
+        print("Remaning balance: ", account.balance)
+    
+    elif (action=="exit"):
+        break
+    else:
+        print("Invalid action")
