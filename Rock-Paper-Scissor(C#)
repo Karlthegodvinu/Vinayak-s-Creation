@@ -1,0 +1,103 @@
+using System;
+namespace Rock_Paper_Scissor
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+
+            String player;
+            String computer;
+
+            while (true)
+            {
+                player = "";
+                computer = "";
+
+                while (player != "ROCK" && player != "PAPER" && player != "SCISSOR")
+                {
+                    Console.Write("Enter ROCK, PAPER or SCISSOR: ");
+                    player = Console.ReadLine();
+                    player = player.ToUpper();
+                }
+
+                int randomNum = random.Next(1, 4);
+                switch (randomNum)
+                {
+                    case 1: computer = "ROCK";
+                        break;
+                    case 2: computer = "PAPER";
+                        break;
+                    case 3: computer = "SCISSOR";
+                        break;
+                }
+
+                Console.WriteLine("Player: "+ player);
+                Console.WriteLine("Computer: " + computer);
+
+                switch (player)
+                {
+                    case "ROCK":
+                        if (computer == "ROCK")
+                        {
+                            Console.WriteLine("Match is Tie.");
+                        }
+                        else if (computer == "PAPER")
+                        {
+                            Console.WriteLine("Computer won.");
+                        }
+                        else if (computer == "SCISSOR")
+                        {
+                            Console.WriteLine("Player won.");
+                        }
+                        break;
+
+                    case "PAPER":
+                        if (computer == "ROCK")
+                        {
+                            Console.WriteLine("PLayer won.");
+                        }
+                        else if (computer == "PAPER")
+                        {
+                            Console.WriteLine("Match is Tie.");
+                        }
+                        else if (computer == "SCISSOR")
+                        {
+                            Console.WriteLine("Computer won.");
+                        }
+                        break;
+
+                    case "SCISSOR":
+                        if (computer == "ROCK")
+                        {
+                            Console.WriteLine("Computer won.");
+                        }
+                        else if (computer == "PAPER")
+                        {
+                            Console.WriteLine("PLayer won.");
+                        }
+                        else if (computer == "SCISSOR")
+                        {
+                            Console.WriteLine("Match is tie.");
+                        }
+                        break;
+                }
+                String option;
+                Console.Write("Do you want to continue (YES/NO): ");
+                option = Console.ReadLine();
+                option = option.ToUpper();
+                if (option == "YES")
+                {
+                    continue;
+                }
+                else if (option == "NO")
+                {
+                    break;
+                }
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
